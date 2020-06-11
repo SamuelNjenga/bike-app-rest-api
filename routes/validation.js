@@ -21,5 +21,15 @@ const loginValidation = (data) => {
     });
     return schema.validate(data);
 };
+
+const contactValidation = (data) => {
+    const schema = Joi.object({
+        name: Joi.string().min(2).required(),
+        email: Joi.string().min(5).required().email(),
+        message: Joi.string().min(2).required(),
+    });
+    return schema.validate(data);
+}
 module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;
+module.exports.contactValidation = contactValidation;
