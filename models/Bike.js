@@ -9,10 +9,6 @@ const BikeSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    id:{
-type:Number,
-required:true
-    },
     inCart: {
         type: Boolean,
         required: true,
@@ -20,23 +16,23 @@ required:true
     },
     total: {
         type: Number,
-        default:0,
+        default: 0,
         required: true
     },
     count: {
         type: Number,
-        default:0,
+        default: 0,
         required: true
     },
-    bikeDescription:{
+    bikeDescription: {
         type: String,
         required: true
     },
-    keyFeatures:{
+    keyFeatures: {
         type: String,
         required: true
     },
-    specifications:{
+    specifications: {
         type: String,
         required: true
     },

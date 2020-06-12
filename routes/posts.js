@@ -51,7 +51,6 @@ router.post('/bike', async (req, res) => {
         bikeDescription: req.body.bikeDescription,
         keyFeatures: req.body.keyFeatures,
         specifications: req.body.specifications,
-        id: req.body.id,
         price: req.body.price,
         companyId: req.body.companyId
     });
