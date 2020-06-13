@@ -41,6 +41,7 @@ const BikeSchema = mongoose.Schema({
         required: true
     },
     companyId: {
+        required:true,
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Company'
     },
