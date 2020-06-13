@@ -4,6 +4,8 @@ const Company = require('../models/Company');
 const Bike = require('../models/Bike');
 const Contact = require('../models/Contact');
 const {contactValidation} = require('./validation')
+
+
 router.post('/company', async (req, res) => {
 
     const company = new Company({
