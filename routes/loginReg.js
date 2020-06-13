@@ -33,7 +33,9 @@ router.post('/register', async (req, res) => {
         userName:req.body.userName,
 		email: req.body.email,
 		gender:req.body.gender,
+		role:req.body.role,
 		password: hashedPassword
+		
 	});
 	try {
 		const savedObject = await user.save();
