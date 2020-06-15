@@ -4,7 +4,7 @@ const Company = require('../models/Company');
 const Bike = require('../models/Bike');
 const Contact = require('../models/Contact');
 const {contactValidation} = require('./validation')
-
+const {authRole} = require('../authentication/authentication')
 
 router.post('/company', async (req, res) => {
 
@@ -45,7 +45,7 @@ router.post('/contact', async (req, res) => {
     }
 });
 
-router.post('/bike', async (req, res) => {
+router.post('/bike',authRole(), async (req, res) => {
 
     const bike = new Bike({
         bikeType: req.body.bikeType,
