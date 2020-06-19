@@ -32,6 +32,16 @@ exports.deleteBike = async (req, res) => {
     }
 };
 
+exports.getDescription = async (req, res) => {
+    try {
+        const bikes = await Bike.find({_id:req.params._id},'bikeDescription -_id');
+        res.json(bikes);
+    } catch (err) {
+        res.json({
+            message: err
+        });
+    }
+};
 
 exports.getBikes = async (req, res, next) => {
     try {
