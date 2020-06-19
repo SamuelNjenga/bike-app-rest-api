@@ -10,7 +10,6 @@ exports.postCompany =  async (req, res) => {
     try {
         const savedObject = await company.save();
         res.json(savedObject);
-        console.log('Hitted')
     } catch (err) {
         res.json({
             message: err

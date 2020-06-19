@@ -24,23 +24,23 @@ router.patch('/:email', async (req, res) => {
         });
     }
 });
-router.patch('/user/:email', async (req, res) => {
-    try {
-        const updatedPassword = await User.updateOne({
-            email: req.params.email
-        }, {
-            $set: {
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                userName: req.body.userName,
-                email: req.body.email
-            }
-        });
-        res.json(updatedPassword);
-    } catch (err) {
-        res.json({
-            message: err
-        });
-    }
-})
+// router.patch('/user/:email', async (req, res) => {
+//     try {
+//         const updatedPassword = await User.updateOne({
+//             email: req.params.email
+//         }, {
+//             $set: {
+//                 firstName: req.body.firstName,
+//                 lastName: req.body.lastName,
+//                 userName: req.body.userName,
+//                 email: req.body.email
+//             }
+//         });
+//         res.json(updatedPassword);
+//     } catch (err) {
+//         res.json({
+//             message: err
+//         });
+//     }
+// })
 module.exports = router;

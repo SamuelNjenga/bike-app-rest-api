@@ -46,6 +46,46 @@ exports.updateUser = async (req, res, next) => {
   }
 }
 
+
+exports.patchUser = async (req, res) => {
+  try {
+      const updatedPassword = await User.updateOne({
+          email: req.params.email
+      }, {
+          $set: {
+              firstName: req.body.firstName,
+              lastName: req.body.lastName,
+              userName: req.body.userName,
+              email: req.body.email
+          }
+      });
+      res.json(updatedPassword);
+  } catch (err) {
+      res.json({
+          message: err
+      });
+  }
+}
+
+exports.patchPassword =  async (req, res) => {
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(req.body.password, salt);
+  try {
+      const updatedPassword = await User.updateOne({
+          email: req.params.email
+      }, {
+          $set: {
+              password: hashedPassword
+          }
+      });
+      res.json(updatedPassword);
+  } catch (err) {
+      res.json({
+          message: err
+      });
+  }
+};
+
 exports.deleteUser = async (req, res, next) => {
   try {
     const userId = req.params.userId;
