@@ -1,5 +1,5 @@
 const Contact = require('../models/Contact');
-const {contactValidation} = require('../routes/validation')
+const {contactValidation} = require('../utils/validation')
 exports.postContact = async (req, res) => {
 
     const {

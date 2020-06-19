@@ -6,7 +6,7 @@ const User = require('../models/User');
 const {
 	registerValidation,
 	loginValidation
-} = require('../routes/validation');
+} = require('../utils/validation');
 
 
 router.post('/register', async (req, res) => {

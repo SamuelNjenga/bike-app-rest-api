@@ -11,17 +11,12 @@ app.use(cors());
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 //Import Routes
-const regLoginRoutes = require('./mainRoutes/RegLoginRoutes')
-const bikeRoutes = require('./mainRoutes/BikeRoutes')
-const userRoutes = require('./mainRoutes/UserRoutes')
-const companyRoutes = require('./mainRoutes/CompanyRoutes')
-const contactRoutes = require('./mainRoutes/ContactRoutes')
-
-const postsRoute = require('./routes/posts');
-const getRoute = require('./routes/gets');
-const patchRoutes = require('./routes/patchs');
-const removeRoute = require('./routes/deletes');
-const loginReg = require('./routes/loginReg');
+const regLoginRoutes = require('./routes/RegLoginRoutes')
+const bikeRoutes = require('./routes/BikeRoutes')
+const userRoutes = require('./routes/UserRoutes')
+const companyRoutes = require('./routes/CompanyRoutes')
+const contactRoutes = require('./routes/ContactRoutes')
+const loginReg = require('./routes/login');
 mongoose.connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -32,11 +27,8 @@ db.once('open', function () {
     console.log('connected');
 });
 //Middleware
-app.use('/api', postsRoute);
-app.use('/api', getRoute);
-app.use('/api', removeRoute);
-app.use('/api',loginReg);
-app.use('/api',patchRoutes);
+
+ app.use('/api',loginReg);
 
 app.use(async (req, res, next) => {
     if (req.headers["x-access-token"]) {
