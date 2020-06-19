@@ -55,3 +55,34 @@ exports.getBikes = async (req, res, next) => {
       });
     }
   }
+
+  exports.postBike = async (req, res) => {
+
+    const bike = new Bike({
+        bikeType: req.body.bikeType,
+        brandName: req.body.brandName,
+        bikeDescription: req.body.bikeDescription,
+        keyFeatures: req.body.keyFeatures,
+        specifications: req.body.specifications,
+        price: req.body.price,
+        companyId: req.body.companyId
+    });
+    try {
+        const savedObject = await bike.save();
+        let b = savedObject._id;
+        const updatedCompany = await Company.updateOne({
+            _id: req.body.companyId
+        }, {
+            $push: {
+                bikes: [{
+                    _id: b
+                }]
+            }
+        });
+        res.json(updatedCompany);
+    } catch (err) {
+        res.json({
+            message: err
+        });
+    }
+};
