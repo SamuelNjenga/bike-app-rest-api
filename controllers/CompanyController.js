@@ -1,5 +1,5 @@
 const Company = require('../models/Company');
-
+const Bike = require('../models/Bike')
 exports.deleteCompany = async (req, res) => {
     try {
         const findCompany = await Company.findOne({
@@ -7,7 +7,7 @@ exports.deleteCompany = async (req, res) => {
         });
         console.log(findCompany)
         let b = findCompany._id;
-        console.log('b is' + b);
+        // console.log('b is' + b);
         console.log('CompId is ' + findCompany.companyId);
         const deletedBikes = await Bike.deleteMany({
             companyId: b
