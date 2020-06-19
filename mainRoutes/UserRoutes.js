@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/RegLoginController');
-const userC = require('../controllers/UserController');
+const regLoginController = require('../controllers/RegLoginController');
+const userController = require('../controllers/UserController');
 
-router.get('/user/:userId', userController.allowIfLoggedin, userC.getUser);
+router.get('/user/:userId', regLoginController.allowIfLoggedin, userController.getUser);
 
-router.put('/user/:userId', userController.allowIfLoggedin, userController.grantAccess('updateAny', 'profile'), userC.updateUser);
+router.put('/user/:userId', regLoginController.allowIfLoggedin, regLoginController.grantAccess('updateAny', 'profile'), userController.updateUser);
 
-router.delete('/user/:userId', userController.allowIfLoggedin, userController.grantAccess('deleteAny', 'profile'), userC.deleteUser);
+router.delete('/user/:userId', regLoginController.allowIfLoggedin, regLoginController.grantAccess('deleteAny', 'profile'), userController.deleteUser);
 
-router.get('/users', userController.allowIfLoggedin, userController.grantAccess('readAny', 'profile'), userC.getUsers);
+router.get('/users', regLoginController.allowIfLoggedin, regLoginController.grantAccess('readAny', 'profile'), userController.getUsers);
 
 module.exports = router;

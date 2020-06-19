@@ -14,6 +14,7 @@ app.use(bodyParser.json());
 const regLoginRoutes = require('./mainRoutes/RegLoginRoutes')
 const bikeRoutes = require('./mainRoutes/BikeRoutes')
 const userRoutes = require('./mainRoutes/UserRoutes')
+const companyRoutes = require('./mainRoutes/CompanyRoutes')
 
 const postsRoute = require('./routes/posts');
 const getRoute = require('./routes/gets');
@@ -60,6 +61,7 @@ app.use(async (req, res, next) => {
 app.use('/', regLoginRoutes);
 app.use('/', bikeRoutes);
 app.use('/',userRoutes);
+app.use('/',companyRoutes)
 
 app.listen(port, () =>
     console.log(`Example app listening at http://localhost:${port}`));
