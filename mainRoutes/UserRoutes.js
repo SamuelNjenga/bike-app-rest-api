@@ -5,6 +5,8 @@ const userController = require('../controllers/UserController');
 
 router.get('/user/:userId', regLoginController.allowIfLoggedin, userController.getUser);
 
+router.get('/getUserById/:email', regLoginController.allowIfLoggedin, regLoginController.grantAccess('updateAny', 'profile'), userController.getUserByEmail);
+
 router.put('/user/:userId', regLoginController.allowIfLoggedin, regLoginController.grantAccess('updateAny', 'profile'), userController.updateUser);
 
 router.delete('/user/:userId', regLoginController.allowIfLoggedin, regLoginController.grantAccess('deleteAny', 'profile'), userController.deleteUser);

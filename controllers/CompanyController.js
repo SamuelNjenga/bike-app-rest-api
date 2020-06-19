@@ -1,5 +1,29 @@
 const Company = require('../models/Company');
 const Bike = require('../models/Bike')
+
+
+exports.getCompanies = async (req, res) => {
+    try {
+        const companies = await Company.find();
+        res.json(companies);
+    } catch (err) {
+        res.json({
+            message: err
+        });
+    }
+};
+
+exports.getCompaniesAndBikes = async (req, res) => {
+    try {
+        const companyAndBike = await Company.find().populate('bikes');
+        res.json(companyAndBike);
+    } catch (err) {
+        res.json({
+            message: err
+        });
+    }
+};
+
 exports.deleteCompany = async (req, res) => {
     try {
         const findCompany = await Company.findOne({
