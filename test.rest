@@ -1,4 +1,5 @@
-GET  http://localhost:3001/api/getCompanies
+GET  http://localhost:3001/api/getBiks
 Content-Type: application/json
+
 
 
