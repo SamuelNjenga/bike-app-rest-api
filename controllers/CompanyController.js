@@ -1,6 +1,22 @@
 const Company = require('../models/Company');
 const Bike = require('../models/Bike')
 
+exports.postCompany =  async (req, res) => {
+
+    const company = new Company({
+        companyName: req.body.companyName,
+        companyEmail: req.body.companyEmail
+    });
+    try {
+        const savedObject = await company.save();
+        res.json(savedObject);
+        console.log('Hitted')
+    } catch (err) {
+        res.json({
+            message: err
+        });
+    }
+};
 
 exports.getCompanies = async (req, res) => {
     try {
