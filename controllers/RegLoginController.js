@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const {
   roles
-} = require('../rolesAuthentication/roles')
+} = require('../utils/roles')
 
 async function hashPassword(password) {
   return await bcrypt.hash(password, 10);
