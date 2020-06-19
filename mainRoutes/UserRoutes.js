@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/controller');
+const userController = require('../controllers/RegLoginController');
 const userC = require('../controllers/UserController');
 
 router.get('/user/:userId', userController.allowIfLoggedin, userC.getUser);

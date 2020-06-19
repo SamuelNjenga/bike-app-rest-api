@@ -11,7 +11,7 @@ app.use(cors());
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 //Import Routes
-const routes = require('./mainRoutes/routes')
+const regLoginRoutes = require('./mainRoutes/RegLoginRoutes')
 const bikeRoutes = require('./mainRoutes/BikeRoutes')
 const userRoutes = require('./mainRoutes/UserRoutes')
 
@@ -57,7 +57,7 @@ app.use(async (req, res, next) => {
     }
   });
 
-app.use('/', routes);
+app.use('/', regLoginRoutes);
 app.use('/', bikeRoutes);
 app.use('/',userRoutes);
 
