@@ -17,6 +17,7 @@ const userRoutes = require('./routes/UserRoutes')
 const companyRoutes = require('./routes/CompanyRoutes')
 const contactRoutes = require('./routes/ContactRoutes')
 const loginReg = require('./routes/login');
+
 mongoose.connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -26,9 +27,15 @@ db.on('error', console.error.bind(console, 'Connection error'));
 db.once('open', function () {
     console.log('connected');
 });
+
 //Middleware
 
- app.use('/api',loginReg);
+app.use('/api',loginReg);
+app.use('/api', regLoginRoutes);
+app.use('/api', bikeRoutes);
+app.use('/api',userRoutes);
+app.use('/api',companyRoutes);
+app.use('/api',contactRoutes);
 
 app.use(async (req, res, next) => {
     if (req.headers["x-access-token"]) {
@@ -51,11 +58,7 @@ app.use(async (req, res, next) => {
     }
   });
 
-app.use('/', regLoginRoutes);
-app.use('/', bikeRoutes);
-app.use('/',userRoutes);
-app.use('/',companyRoutes);
-app.use('/',contactRoutes);
+
 
 app.listen(port, () =>
     console.log(`Example app listening at http://localhost:${port}`));
