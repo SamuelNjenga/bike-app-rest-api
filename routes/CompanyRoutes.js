@@ -3,7 +3,7 @@ const router = express.Router();
 const regLoginController = require('../controllers/RegLoginController');
 const companyController = require('../controllers/CompanyController');
 
- router.get('/companies', regLoginController.allowIfLoggedin, regLoginController.grantAccess('readAny', 'profile'), companyController.getCompanies);
+ router.get('/companies', companyController.getCompanies);
 
  router.post('/company', regLoginController.allowIfLoggedin, regLoginController.grantAccess('readAny', 'profile'), companyController.postCompany);
 

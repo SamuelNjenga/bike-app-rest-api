@@ -34,7 +34,9 @@ exports.deleteBike = async (req, res) => {
 
 exports.getDescription = async (req, res) => {
     try {
-        const bikes = await Bike.find({_id:req.params._id},'bikeDescription -_id');
+        const bikes = await Bike.find({
+            _id: req.params._id
+        }, 'bikeDescription -_id');
         res.json(bikes);
     } catch (err) {
         res.json({
@@ -45,18 +47,16 @@ exports.getDescription = async (req, res) => {
 
 exports.getBikes = async (req, res, next) => {
     try {
-      const bikes = await Bike.find({});
-      res.status(200).json({
-        data: bikes
-      })
+        const bikes = await Bike.find();
+        res.json(bikes);
     } catch (err) {
-      res.json({
-        message: err
-      });
+        res.json({
+            message: err
+        });
     }
-  }
+}
 
-  exports.postBike = async (req, res) => {
+exports.postBike = async (req, res) => {
 
     const bike = new Bike({
         bikeType: req.body.bikeType,

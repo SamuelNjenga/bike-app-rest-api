@@ -9,7 +9,7 @@ const app = express();
 const port = 3001;
 app.use(cors());
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.urlencoded({ extended: false }));
 //Import Routes
 const regLoginRoutes = require('./routes/RegLoginRoutes')
 const bikeRoutes = require('./routes/BikeRoutes')
