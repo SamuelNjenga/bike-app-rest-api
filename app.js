@@ -16,7 +16,6 @@ const bikeRoutes = require('./routes/BikeRoutes')
 const userRoutes = require('./routes/UserRoutes')
 const companyRoutes = require('./routes/CompanyRoutes')
 const contactRoutes = require('./routes/ContactRoutes')
-const loginReg = require('./routes/login');
 
 mongoose.connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true,
@@ -30,7 +29,7 @@ db.once('open', function () {
 
 //Middleware
 
-app.use('/api',loginReg);
+//app.use('/api',loginReg);
 app.use('/api', regLoginRoutes);
 app.use('/api', bikeRoutes);
 app.use('/api',userRoutes);
