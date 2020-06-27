@@ -63,6 +63,7 @@ exports.postBike = async (req, res) => {
         brandName: req.body.brandName,
         bikeDescription: req.body.bikeDescription,
         keyFeatures: req.body.keyFeatures,
+        numberOfItems: req.body.numberOfItems,
         specifications: req.body.specifications,
         price: req.body.price,
         companyId: req.body.companyId
@@ -74,6 +75,7 @@ exports.postBike = async (req, res) => {
         const bikeSelling = new BikeSelling({
             bikeType: req.body.bikeType,
             brandName: req.body.brandName,
+            remainingItems:req.body.numberOfItems,
             bikeId: b
         });
 

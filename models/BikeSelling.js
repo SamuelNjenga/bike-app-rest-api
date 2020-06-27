@@ -9,16 +9,14 @@ const BikeSellingSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    // soldItems: {
-    //     type: Number,
-    //     default: 0,
-    //     required: true
-    // },
-    // remainingItems: {
-    //     type: Number,
-    //     default: 0,
-    //     required: true
-    // },
+    soldItems: {
+        type: Number,
+        default: 0
+    },
+    remainingItems: {
+        type: Number,
+        required: true
+    },
     bikeId: {
         required: true,
         type: mongoose.Schema.Types.ObjectId,
