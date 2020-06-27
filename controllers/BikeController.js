@@ -1,6 +1,6 @@
 const Bike = require('../models/Bike')
 const Company = require('../models/Company')
-
+const BikeSelling = require('../models/BikeSelling')
 
 exports.deleteBike = async (req, res) => {
     try {
@@ -70,6 +70,15 @@ exports.postBike = async (req, res) => {
     try {
         const savedObject = await bike.save();
         let b = savedObject._id;
+
+        const bikeSelling = new BikeSelling({
+            bikeType: req.body.bikeType,
+            brandName: req.body.brandName,
+            bikeId: b
+        });
+
+        const savedSelling = await bikeSelling.save();
+
         const updatedCompany = await Company.updateOne({
             _id: req.body.companyId
         }, {
@@ -79,6 +88,9 @@ exports.postBike = async (req, res) => {
                 }]
             }
         });
+
+        
+
         res.json(updatedCompany);
     } catch (err) {
         res.json({
