@@ -5,7 +5,7 @@ const bikeController = require('../controllers/BikeController');
 
 router.get('/bikes',bikeController.getBikes);
 
-router.post('/bike', userController.allowIfLoggedin, userController.grantAccess('readAny', 'profile'), bikeController.postBike);
+router.post('/bike',  bikeController.postBike);
 
 router.get('/description/:_id',bikeController.getDescription);
 

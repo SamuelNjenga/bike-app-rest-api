@@ -36,6 +36,10 @@ const BikeSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    numberOfItems: {
+        type: Number,
+        required: true
+    },
     price: {
         type: Number,
         required: true
