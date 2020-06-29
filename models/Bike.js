@@ -21,7 +21,7 @@ const BikeSchema = mongoose.Schema({
     },
     count: {
         type: Number,
-        default: 0,
+        default: 1,
         required: true
     },
     bikeDescription: {

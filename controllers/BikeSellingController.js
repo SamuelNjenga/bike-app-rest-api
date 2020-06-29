@@ -8,8 +8,8 @@ exports.patchBikeSelling = async (req, res) => {
             bikeId: req.params.id
         }, {
             $inc: {
-                soldItems: req.body.soldItems,
-                remainingItems: -req.body.soldItems
+                soldItems: req.body.count,
+                remainingItems: -req.body.count
             }
         });
         res.json(updatedBikeSelling);
