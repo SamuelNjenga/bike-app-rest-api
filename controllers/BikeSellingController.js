@@ -4,7 +4,7 @@ const BikeSelling = require('../models/BikeSelling')
 
 exports.patchBikeSelling = async (req, res) => {
     try {
-        const updatedBikeSelling = await BikeSelling.updateOne({
+        const updatedBikeSelling = await BikeSelling.updateMany({
             bikeId: req.params.id
         }, {
             $inc: {
