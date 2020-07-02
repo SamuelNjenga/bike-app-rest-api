@@ -7,10 +7,15 @@ require('dotenv/config');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 3001;
+
+//New
+app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
 //app.use(bodyParser.urlencoded({ extended: false }));
 //Import Routes
+
+const paymentRoutes = require('./routes/PaymentRoute')
 const regLoginRoutes = require('./routes/RegLoginRoutes')
 const bikeRoutes = require('./routes/BikeRoutes')
 const userRoutes = require('./routes/UserRoutes')
@@ -31,6 +36,7 @@ db.once('open', function () {
 //Middleware
 
 //app.use('/api',loginReg);
+app.use('/api',paymentRoutes);
 app.use('/api',bikeSellingRoutes);
 app.use('/api', bikeRoutes);
 app.use('/api',userRoutes);
@@ -58,8 +64,6 @@ app.use(async (req, res, next) => {
       next();
     }
   });
-
-
 
 app.listen(port, () =>
     console.log(`Example app listening at http://localhost:${port}`));
