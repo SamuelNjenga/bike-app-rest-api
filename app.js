@@ -2,13 +2,12 @@ const express = require('express');
 let mongoose = require('mongoose');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
-const User = require('./models/User1');
+const User = require('./models/User');
 require('dotenv/config');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 3001;
 
-//New
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());

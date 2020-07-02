@@ -1,4 +1,4 @@
-const User = require('../models/User1');
+const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const {
@@ -48,13 +48,21 @@ exports.signup = async (req, res, next) => {
     const {
       role,
       email,
-      password
+      password,
+      firstName,
+      lastName,
+      userName,
+      gender
     } = req.body
     const hashedPassword = await hashPassword(password);
     const newUser = new User({
+      firstName: firstName,
+      lastName: lastName,
+      userName: userName,
       email: email,
       password: hashedPassword,
-      role: role || "basic"
+      role: role || "basic",
+      gender: gender
     });
     const accessToken = jwt.sign({
       userId: newUser._id
