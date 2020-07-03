@@ -31,6 +31,15 @@ const contactValidation = (data) => {
     });
     return schema.validate(data);
 }
+
+const newCompanyValidation = (data) => {
+    const schema = Joi.object({
+        companyName: Joi.string().min(2).required(),
+        companyEmail: Joi.string().min(5).required().email()
+    });
+    return schema.validate(data);
+}
 module.exports.newUserValidation = newUserValidation;
+module.exports.newCompanyValidation = newCompanyValidation;
 module.exports.loginValidation = loginValidation;
 module.exports.contactValidation = contactValidation;

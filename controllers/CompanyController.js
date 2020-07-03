@@ -1,7 +1,14 @@
 const Company = require('../models/Company');
 const Bike = require('../models/Bike')
+const {
+    newCompanyValidation
+} = require('../utils/validation');
 
-exports.postCompany =  async (req, res) => {
+exports.postCompany = async (req, res) => {
+    const {
+        error
+    } = newCompanyValidation(req.body);
+    if (error) return res.status(400).send(error.details[0].message);
 
     const company = new Company({
         companyName: req.body.companyName,

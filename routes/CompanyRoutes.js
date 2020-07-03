@@ -5,7 +5,7 @@ const companyController = require('../controllers/CompanyController');
 
  router.get('/companies', companyController.getCompanies);
 
- router.post('/company', regLoginController.allowIfLoggedin, regLoginController.grantAccess('readAny', 'profile'), companyController.postCompany);
+ router.post('/company', companyController.postCompany);
 
  router.get('/companiesAndBikes', regLoginController.allowIfLoggedin, regLoginController.grantAccess('readAny', 'profile'), companyController.getCompaniesAndBikes);
 
