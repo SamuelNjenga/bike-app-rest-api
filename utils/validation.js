@@ -2,7 +2,7 @@
 const Joi = require('@hapi/joi');
 
 //Register Validation
-const registerValidation = (data) => {
+const newUserValidation = (data) => {
     const schema = Joi.object({
         firstName: Joi.string().min(3).required(),
         lastName: Joi.string().min(3).required(),
@@ -31,6 +31,6 @@ const contactValidation = (data) => {
     });
     return schema.validate(data);
 }
-module.exports.registerValidation = registerValidation;
+module.exports.newUserValidation = newUserValidation;
 module.exports.loginValidation = loginValidation;
 module.exports.contactValidation = contactValidation;

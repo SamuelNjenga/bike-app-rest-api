@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
+const {newUserValidation} = require('../utils/validation');
 const bcrypt = require('bcrypt');
 const {
   roles
@@ -44,6 +45,12 @@ exports.allowIfLoggedin = async (req, res, next) => {
 }
 
 exports.signup = async (req, res, next) => {
+
+  const {
+  	error
+  } = newUserValidation(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+
   try {
     const {
       role,
@@ -56,13 +63,13 @@ exports.signup = async (req, res, next) => {
     } = req.body
     const hashedPassword = await hashPassword(password);
     const newUser = new User({
-      firstName: firstName,
-      lastName: lastName,
-      userName: userName,
-      email: email,
+      firstName,
+      lastName,
+      userName,
+      email,
       password: hashedPassword,
       role: role || "basic",
-      gender: gender
+      gender
     });
     const accessToken = jwt.sign({
       userId: newUser._id
