@@ -45,7 +45,25 @@ exports.getCompaniesAndBikes = async (req, res) => {
         });
     }
 };
-
+exports.updateCompany = async (req, res, next) => {
+    try {
+      const {
+        companyName,
+        companyEmail
+      } = req.body
+      const companyId = req.params.companyId;
+      await Company.findByIdAndUpdate(companyId, {
+        companyName,
+        companyEmail
+      });
+      const user = await Company.findById(companyId)
+      res.status(204).json({
+        data: user
+      });
+    } catch (error) {
+      next(error)
+    }
+  }
 exports.deleteCompany = async (req, res) => {
     try {
         const findCompany = await Company.findOne({
