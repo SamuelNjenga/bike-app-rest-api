@@ -9,9 +9,9 @@ router.get('/getUserById/:email', userController.getUserByEmail);
 
 router.patch('/user/:email', regLoginController.allowIfLoggedin, regLoginController.grantAccess('updateAny', 'profile'), userController.patchUser);
 
-router.patch('/:email', regLoginController.allowIfLoggedin, regLoginController.grantAccess('updateAny', 'profile'), userController.patchPassword);
+router.patch('/:email', userController.patchPassword);
 
-router.put('/user/:userId', regLoginController.allowIfLoggedin, regLoginController.grantAccess('updateAny', 'profile'), userController.updateUser);
+router.put('/user/:userId', userController.updateUser);
 
 router.delete('/user/:userId', regLoginController.allowIfLoggedin, regLoginController.grantAccess('deleteAny', 'profile'), userController.deleteUser);
 

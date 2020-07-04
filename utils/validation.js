@@ -6,9 +6,9 @@ const newUserValidation = (data) => {
     const schema = Joi.object({
         firstName: Joi.string().min(3).required(),
         lastName: Joi.string().min(3).required(),
-        gender: Joi.string().valid('male', 'female'),
+        gender: Joi.string().valid('male', 'female').required(),
         userName: Joi.string().min(3).required(),
-        role: Joi.string().valid('user', 'seller','admin'),
+        role: Joi.string().valid('user', 'seller','admin').required(),
         email: Joi.string().min(6).required().email(),
         password: Joi.string().min(3).required()
     });

@@ -56,9 +56,9 @@ exports.updateCompany = async (req, res, next) => {
         companyName,
         companyEmail
       });
-      const user = await Company.findById(companyId)
+      const company = await Company.findById(companyId)
       res.status(204).json({
-        data: user
+        data: company
       });
     } catch (error) {
       next(error)

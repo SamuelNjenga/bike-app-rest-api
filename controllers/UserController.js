@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const {newUserValidation} = require('../utils/validation');
 
 exports.getUserByEmail = async (req, res) => {
   try {
@@ -27,25 +28,38 @@ exports.getUser = async (req, res, next) => {
 }
 
 exports.updateUser = async (req, res, next) => {
+  const {
+  	error
+  } = newUserValidation(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
   try {
     const {
-      role,
-      email
+      firstName,
+      lastName,
+      userName,
+      gender,
+      email,
+      password,
+      role
     } = req.body
     const userId = req.params.userId;
     await User.findByIdAndUpdate(userId, {
-      role,
-      email
+      firstName,
+      lastName,
+      userName,
+      gender,
+      email,
+      password,
+      role
     });
     const user = await User.findById(userId)
-    res.status(200).json({
+    res.status(204).json({
       data: user
     });
   } catch (error) {
     next(error)
   }
 }
-
 
 exports.patchUser = async (req, res) => {
   try {
@@ -56,7 +70,8 @@ exports.patchUser = async (req, res) => {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         userName: req.body.userName,
-        email: req.body.email
+        email: req.body.email,
+
       }
     });
     res.json(updatedPassword);
