@@ -7,7 +7,7 @@ router.get('/user/:userId', regLoginController.allowIfLoggedin, userController.g
 
 router.get('/getUserById/:email', userController.getUserByEmail);
 
-router.patch('/user/:email', regLoginController.allowIfLoggedin, regLoginController.grantAccess('updateAny', 'profile'), userController.patchUser);
+router.patch('/user/:email',  userController.patchUser);
 
 router.patch('/:email', userController.patchPassword);
 
