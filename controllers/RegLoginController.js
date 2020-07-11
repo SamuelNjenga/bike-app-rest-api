@@ -110,10 +110,11 @@ exports.login = async (req, res, next) => {
     res.status(200).json({
       data: {
         email: user.email,
-        role: user.role
+        role: user.role,
+        id:user._id
       },
       accessToken
-    })
+    }) 
   } catch (error) {
     next(error);
   }

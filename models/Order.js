@@ -6,14 +6,19 @@ const OrderSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    bikeType: {
-        type: String,
-        required: true
-    },
-    brandName: {
-        type: String,
-        required: true
-    },
+    // bikeType: {
+    //     type: String,
+    //     required: true
+    // },
+    // brandName: {
+    //     type: String,
+    //     required: true
+    // },
+    // customerEmail: {
+    //     required: true,
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'User'
+    // },
     bikeId: {
         required: true,
         type: mongoose.Schema.Types.ObjectId,

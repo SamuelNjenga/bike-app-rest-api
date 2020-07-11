@@ -1,5 +1,6 @@
 const Bike = require('../models/Bike')
 const BikeSelling = require('../models/BikeSelling')
+const Order = require('../models/Order')
 
 
 exports.patchBikeSelling = async (req, res) => {
@@ -18,4 +19,4 @@ exports.patchBikeSelling = async (req, res) => {
             message: err
         });
     }
-}
+};
