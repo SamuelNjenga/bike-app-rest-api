@@ -28,3 +28,16 @@ exports.getOrders = async (req, res) => {
         });
     }
 };
+
+exports.getSpecificOrders = async (req, res) => {
+    try {
+        const orders = await Order.find({
+            customerId: req.params.userId
+        });
+        res.json(orders);
+    } catch (err) {
+        res.json({
+            message: err
+        });
+    }
+};
