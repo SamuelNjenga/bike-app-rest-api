@@ -17,3 +17,14 @@ exports.postOrder = async (req, res) => {
         });
     }
 };
+
+exports.getOrders = async (req, res) => {
+    try {
+        const orders = await Order.find();
+        res.json(orders);
+    } catch (err) {
+        res.json({
+            message: err
+        });
+    }
+};
