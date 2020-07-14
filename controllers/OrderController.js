@@ -33,7 +33,7 @@ exports.getSpecificOrders = async (req, res) => {
     try {
         const orders = await Order.find({
             customerId: req.params.userId
-        });
+        }).populate('bikeId')
         res.json(orders);
     } catch (err) {
         res.json({
